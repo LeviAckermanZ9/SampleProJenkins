@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="A little corner of the internet for good ideas, fresh coffee, and creative work.">
+  <title>Good Things Studio — Make room for good ideas</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172c27;
+      --muted: #65746e;
+      --paper: #f8f7f2;
+      --green: #dce9d7;
+      --orange: #f0784b;
+      --line: rgba(23, 44, 39, .13);
+      --serif: "Iowan Old Style", "Baskerville", "Palatino Linotype", Georgia, serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); }
+    body:before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .22; background-image: radial-gradient(#9b967f 0.45px, transparent 0.45px); background-size: 7px 7px; }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    header { height: 84px; display: flex; align-items: center; border-bottom: 1px solid var(--line); background: rgba(248,247,242,.88); backdrop-filter: blur(14px); }
+    nav { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .brand { display: inline-flex; gap: 11px; align-items: center; text-decoration: none; font-size: 15px; font-weight: 750; letter-spacing: -.03em; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50% 50% 48% 20%; transform: rotate(-12deg); color: white; background: var(--orange); font-size: 19px; box-shadow: 0 5px 15px #f0784b48; }
+    .nav-links { display: flex; gap: 34px; align-items: center; font-size: 13px; font-weight: 600; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: #b95732; }
+    .nav-cta { border: 1px solid var(--ink); border-radius: 99px; padding: 12px 18px; transition: color .2s, background .2s; }
+    .nav-cta:hover { color: white; background: var(--ink); }
+    .hero { min-height: 650px; padding-block: 76px 92px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 42px; }
+    .eyebrow { margin: 0 0 22px; color: #a95637; text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 800; }
+    h1 { max-width: 620px; margin: 0; font-family: var(--serif); font-size: clamp(62px, 8vw, 100px); line-height: .9; font-weight: 500; letter-spacing: -.075em; }
+    h1 em { color: #b86140; font-weight: 400; }
+    .hero-copy { max-width: 440px; margin: 28px 0 32px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    .button { display: inline-flex; align-items: center; gap: 14px; border: 0; border-radius: 99px; padding: 16px 22px; background: var(--ink); color: white; font: inherit; font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 9px 20px #172c2720; transition: transform .2s, background .2s, box-shadow .2s; }
+    .button:hover { transform: translateY(-3px); background: #35564a; box-shadow: 0 14px 26px #172c2730; }
+    .button span { font-size: 18px; line-height: 12px; }
+    .hero-art { min-height: 450px; position: relative; display: grid; place-items: center; isolation: isolate; }
+    .hero-art:before { content: ""; position: absolute; inset: 8% 3% 1%; z-index: -1; border-radius: 48% 52% 44% 56% / 52% 44% 56% 48%; background: #e9eee4; transform: rotate(-5deg); }
+    .sun { position: absolute; width: 330px; aspect-ratio: 1; border-radius: 50%; background: linear-gradient(145deg, #f4d09b, #f1b66f); right: 8%; top: 1%; box-shadow: inset -16px -18px 40px #df995146; animation: float 7s ease-in-out infinite; }
+    .arch { position: absolute; width: 275px; height: 350px; border-radius: 150px 150px 20px 20px; background: linear-gradient(145deg, #a9bba1, #78927d); bottom: 0; left: 12%; overflow: hidden; box-shadow: 0 22px 42px #36544322; }
+    .arch:before { content: ""; position: absolute; width: 210px; height: 265px; left: 33px; bottom: -14px; border-radius: 120px 120px 4px 4px; background: #dfe5d4; }
+    .leaf { position: absolute; width: 56px; height: 180px; left: 108px; bottom: 26px; border-radius: 100% 0 100% 0; background: linear-gradient(110deg, #456953, #294c3c); transform: rotate(21deg); }
+    .leaf:before, .leaf:after { content: ""; position: absolute; width: 42px; height: 116px; border-radius: 100% 0 100% 0; background: #769078; }
+    .leaf:before { left: -34px; top: 28px; transform: rotate(-41deg); }
+    .leaf:after { left: 28px; top: 63px; transform: rotate(45deg); }
+    .pot { position: absolute; z-index: 2; bottom: 23px; left: 31%; width: 145px; height: 115px; background: linear-gradient(110deg, #e99269, #ce664b); clip-path: polygon(8% 0, 92% 0, 78% 100%, 22% 100%); filter: drop-shadow(0 15px 10px #5b49382c); }
+    .spark { position: absolute; z-index: 3; right: 1%; bottom: 13%; color: #b86140; font-size: 52px; transform: rotate(12deg); }
+    .note { position: absolute; z-index: 4; right: 0; bottom: 8%; padding: 16px 19px; border: 1px solid #ffffffc7; border-radius: 13px; background: #fffdf8e8; box-shadow: 0 18px 40px #20362f20; font: italic 15px var(--serif); transform: rotate(4deg); backdrop-filter: blur(8px); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .section { border-top: 1px solid var(--line); padding-block: 88px 100px; }
+    .section-top { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 32px; }
+    h2 { margin: 0; font: 500 clamp(38px, 4.6vw, 56px)/1.02 var(--serif); letter-spacing: -.055em; }
+    .section-top p { max-width: 340px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { min-height: 250px; padding: 29px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); border-radius: 19px; background: #fffefa; box-shadow: 0 7px 25px #172c2708; transition: transform .25s, box-shadow .25s; }
+    .card:hover { transform: translateY(-7px); box-shadow: 0 18px 35px #172c2715; }
+    .card:nth-child(2) { background: #eaf0e6; }
+    .card:nth-child(3) { background: #f6e9df; }
+    .card-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 15px; background: #ffffffa8; color: #b86140; font-size: 23px; }
+    .card h3 { margin: 20px 0 9px; font: 500 27px var(--serif); letter-spacing: -.04em; }
+    .card p { margin: 0; max-width: 290px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .contact { position: relative; overflow: hidden; padding: 62px; display: flex; justify-content: space-between; align-items: center; gap: 30px; border: 1px solid #cedbca; border-radius: 23px; background: linear-gradient(120deg, #e4eddf, #d5e5d0); box-shadow: 0 20px 50px #304e3810; }
+    .contact:after { content: "✳"; position: absolute; right: 25%; top: -95px; color: #ffffff75; font-size: 260px; pointer-events: none; }
+    .contact > * { position: relative; z-index: 1; }
+    .contact h2 { max-width: 530px; }
+    .contact p { margin: 13px 0 0; color: var(--muted); font-size: 14px; }
+    footer { padding-block: 36px; display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 12px; }
+    footer a { text-decoration: none; }
+    :focus-visible { outline: 3px solid #c85d39; outline-offset: 4px; border-radius: 5px; }
+    @media (prefers-reduced-motion: reduce) { *, *:before, *:after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      header { height: 70px; }
+      .nav-links { gap: 18px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { grid-template-columns: 1fr; padding-block: 62px 52px; gap: 8px; }
+      .hero-art { min-height: 350px; }
+      .sun { width: 270px; }
+      .arch { transform: scale(.85); transform-origin: bottom left; left: 10%; }
+      .pot { left: 28%; }
+      .section { padding-block: 56px; }
+      .section-top { display: block; }
+      .section-top p { margin-top: 15px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: 185px; }
+      .contact { padding: 32px 24px; align-items: flex-start; flex-direction: column; }
+      footer { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span> Good Things Studio</a>
+      <div class="nav-links">
+        <a href="#about">Our approach</a>
+        <a href="#offerings">What we do</a>
+        <a class="nav-cta" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero wrap" id="about">
+      <div>
+        <p class="eyebrow">Independent creative studio · Est. 2024</p>
+        <h1>Make room for <em>good</em> ideas.</h1>
+        <p class="hero-copy">We help thoughtful people turn a spark into something real. A small, friendly studio for brands, digital things, and the occasional very important coffee break.</p>
+        <a class="button" href="#offerings">See what we do <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-art" role="img" aria-label="Abstract illustration of a leafy plant in a terracotta pot">
+        <div class="sun"></div><div class="arch"><div class="leaf"></div></div><div class="pot"></div><div class="spark" aria-hidden="true">✳</div><div class="note">Take it one good step at a time.</div>
+      </div>
+    </section>
+    <section class="section" id="offerings">
+      <div class="wrap">
+        <div class="section-top">
+          <h2>A few things we’re<br>good at.</h2>
+          <p>Clear thinking, kind collaboration, and craft you can feel. We bring the right people together to make the next thing better.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="card-icon" aria-hidden="true">✳</div><div><h3>Find your story</h3><p>Positioning, naming, and a clear point of view that feels like you.</p></div></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">◒</div><div><h3>Give it a look</h3><p>Identity systems with a little character and room to grow.</p></div></article>
+          <article class="card"><div class="card-icon" aria-hidden="true">↗</div><div><h3>Bring it to life</h3><p>Thoughtful websites and digital experiences made for real people.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="wrap" id="contact">
+      <div class="contact">
+        <div><p class="eyebrow">Have a good one in mind?</p><h2>Let’s make something that matters.</h2><p>Tell us what you’re dreaming up. We’ll bring the coffee.</p></div>
+        <a class="button" href="mailto:hello@goodthings.studio">hello@goodthings.studio <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span> Good Things Studio</a><span>Made with care · © <span id="year"></span> Good Things Studio</span></footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
